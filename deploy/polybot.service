@@ -1,0 +1,16 @@
+# polybot.service
+[Unit]
+Description=Polymarket Weather Bot Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/polymarket-weather-bot
+EnvironmentFile=/opt/polymarket-weather-bot/.env
+ExecStart=/opt/polymarket-weather-bot/.venv/bin/python daemon.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
